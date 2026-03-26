@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Моделювання кінематики прямолінійного руху</title>
+  </head>
+  <body>
+    <form id="kinematics-form" class="controls">
+      <h2>Параметри руху</h2>
+      <div class="input-group">
+        <label for="x0">Початкова координата X:</label>
+        <input type="number" id="x0" value="0" required />
+      </div>
+      <div class="input-group">
+        <label for="y0">Початкова координата Y:</label>
+        <input type="number" id="y0" value="0" required />
+      </div>
+      <div class="input-group">
+        <label for="angle">Напрямок руху (кут у градусах):</label>
+        <input type="number" id="angle" value="45" required />
+      </div>
+      <div class="input-group">
+        <label for="v0">Початкова швидкість (v_0):</label>
+        <input type="number" id="v0" value="10" min="0" required />
+      </div>
+      <div class="input-group">
+        <label for="a">Прискорення (a):</label>
+        <input type="number" id="a" value="2" required />
+      </div>
+      <div class="input-group">
+        <label for="dt">Крок часу (dt):</label>
+        <input
+          type="number"
+          id="dt"
+          value="0.05"
+          step="0.01"
+          min="0.01"
+          required
+        />
+      </div>
+      <div class="input-group">
+        <label for="tMax">Максимальний час (t_{max}):</label>
+        <input type="number" id="tMax" value="10" min="0" required />
+      </div>
+      <div class="input-group">
+        <label for="color">Колір траєкторії:</label>
+        <input type="color" id="color" value="#007bff" />
+      </div>
+      <div class="buttons">
+        <button type="submit" id="btn-draw">Графік</button>
+        <button type="button" id="btn-clear">Очистити</button>
+      </div>
+    </form>
+
+    <div class="canvas-container">
+      <canvas id="simulationCanvas" width="600" height="600"></canvas>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
