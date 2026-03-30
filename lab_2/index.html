@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Моделювання руху тіла кинутого під кутом</title>
+</head>
+<body>
+
+    <form id="physics-form" class="controls">
+        <h2>Параметри кидку</h2>
+        <div class="input-group">
+            <label>Початкова швидкість v0 (м/с):</label>
+            <input type="number" id="v0" value="20" min="0" required>
+        </div>
+        <div class="input-group">
+            <label>Кут кидання (градуси):</label>
+            <input type="number" id="angle" value="45" min="0" max="90" required>
+        </div>
+        <div class="input-group">
+            <label>Початкова висота h0 (м):</label>
+            <input type="number" id="h0" value="0" min="0" required>
+        </div>
+        <div class="input-group">
+            <label>Прискорення g (м/с²):</label>
+            <input type="number" id="g" value="9.81" step="0.01" required>
+        </div>
+        <div class="input-group">
+            <label>Крок часу dt (с):</label>
+            <input type="number" id="dt" value="0.05" step="0.01" min="0.01" required>
+        </div>
+        <div class="buttons">
+            <button type="submit" id="btn-draw">Побудувати</button>
+            <button type="button" id="btn-clear">Очистити</button>
+        </div>
+    </form>
+
+    <canvas id="simCanvas" width="800" height="600"></canvas>
+
+</body>
+</html>
