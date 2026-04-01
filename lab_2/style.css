@@ -4,6 +4,8 @@ body {
   gap: 20px;
   padding: 20px;
   background: #f4f4f9;
+  justify-content: center;
+  align-items: center;
 }
 .controls {
   background: white;
