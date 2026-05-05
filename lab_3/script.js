@@ -37,6 +37,22 @@ class KnapsackSolver {
       );
     }
   }
+
+  // Жадібний метод
+  solveGreedy() {
+    let sortedItems = [...this.items].sort(
+      (a, b) => b.value / b.weight - a.value / a.weight,
+    );
+    let currentWeight = 0,
+      currentValue = 0;
+    for (let item of sortedItems) {
+      if (currentWeight + item.weight <= this.W) {
+        currentWeight += item.weight;
+        currentValue += item.value;
+      }
+    }
+    return { maxValue: currentValue };
+  }
 }
 
 const W_test = 24;
@@ -57,5 +73,9 @@ function runTests() {
   console.log("Метод 1 (Перебір) - тест пройдено. Очікувано: 47");
   console.assert(solver.solveRecursive() === 47, "Помилка: Рекурсія");
   console.log("Метод 2 (Рекурсія) - тест пройдено.");
+  const greedyRes = solver.solveGreedy().maxValue;
+  console.log(
+    `Метод 3 (Жадібний) - завершено. Знайдено: ${greedyRes}. (Цей метод може не співпадати з 47)`,
+  );
 }
 runTests();
