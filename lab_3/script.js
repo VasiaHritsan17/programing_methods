@@ -23,6 +23,20 @@ class KnapsackSolver {
     }
     return { maxValue: maxVal };
   }
+
+  // Метод рекурсії
+  solveRecursive(W = this.W, n = this.n) {
+    if (n === 0 || W === 0) return 0;
+    if (this.items[n - 1].weight > W) {
+      return this.solveRecursive(W, n - 1);
+    } else {
+      return Math.max(
+        this.items[n - 1].value +
+          this.solveRecursive(W - this.items[n - 1].weight, n - 1),
+        this.solveRecursive(W, n - 1),
+      );
+    }
+  }
 }
 
 const W_test = 24;
@@ -41,5 +55,7 @@ function runTests() {
   const solver = new KnapsackSolver(W_test, items_test);
   console.assert(solver.solveBruteForce().maxValue === 47, "Помилка: Перебір");
   console.log("Метод 1 (Перебір) - тест пройдено. Очікувано: 47");
+  console.assert(solver.solveRecursive() === 47, "Помилка: Рекурсія");
+  console.log("Метод 2 (Рекурсія) - тест пройдено.");
 }
 runTests();
