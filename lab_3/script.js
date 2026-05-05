@@ -54,7 +54,7 @@ class KnapsackSolver {
     return { maxValue: currentValue };
   }
 
-  // Метод динамічного програмування
+//   Метод динамічного програмування
   solveDP() {
     let dp = Array(this.n + 1)
       .fill()
@@ -128,3 +128,60 @@ function runTests() {
   console.log("Метод 4 та Метод 5 - тести пройдено.");
 }
 runTests();
+
+
+function runSelectedMethod() {
+    const method = document.getElementById('methodSelect').value;
+    const solver = new KnapsackSolver(W_test, items_test);
+    let result;
+    
+    const startTime = performance.now();
+    
+    switch (method) {
+        case 'bruteforce':
+            result = solver.solveBruteForce();
+            break;
+        case 'recursive':
+            result = { maxValue: solver.solveRecursive() };
+            break;
+        case 'greedy':
+            result = solver.solveGreedy();
+            break;
+        case 'dp':
+            result = solver.solveDP();
+            break;
+        case 'bnb':
+            result = solver.solveBranchAndBound();
+            break;
+    }
+    
+    let resultHtml = `<h3>Результат</h3>`;
+    resultHtml += `<p><strong>Максимальна цінність:</strong> ${result.maxValue}</p>`;
+    
+    document.getElementById('resultContainer').innerHTML = resultHtml;
+    
+    const tableContainer = document.getElementById('tableContainer');
+    if (method === 'dp') {
+        const dp = result.dpTable;
+        let html = '<h4>Таблиця станів ДП:</h4><table><tr><th>i \\ w</th>';
+        
+        for(let w=0; w<=solver.W; w++) html += `<th>${w}</th>`;
+        html += '</tr>';
+
+        let delayCount = 0;
+        for(let i=0; i<=solver.n; i++) {
+            html += `<tr><th>${i}</th>`;
+            for(let w=0; w<=solver.W; w++) {
+                let cls = (i === solver.n && w === solver.W) ? 'highlight animated' : 'animated';
+                let style = `animation-delay: ${delayCount * 50}ms;`;
+                html += `<td class="${cls}" style="${style}">${dp[i][w]}</td>`;
+                delayCount++;
+            }
+            html += '</tr>';
+        }
+        html += '</table>';
+        tableContainer.innerHTML = html;
+    } else {
+        tableContainer.innerHTML = '';
+    }
+}

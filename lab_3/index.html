@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Задача "Рюкзак"</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; display: flex; flex-direction: column; align-items: center; margin-top:100px ;}
+        table { border-collapse: collapse; margin-top: 20px; font-size: 12px; }
+        th, td { border: 1px solid #999; padding: 5px; text-align: center; }
+        th { background: #eee; }
+        .highlight { background: #a8d5ff !important; font-weight: bold; color: black; }
+        .animated {
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h2>Задача "Рюкзак"</h2>
+    <div style="margin-bottom: 20px;">
+        <label for="methodSelect">Оберіть методологію:</label>
+        <select id="methodSelect" style="padding: 5px;">
+            <option value="bruteforce">Метод повного перебору</option>
+            <option value="recursive">Рекурсивний метод</option>
+            <option value="greedy">Жадібний метод</option>
+            <option value="dp">Метод динамічного програмування</option>
+            <option value="bnb">Метод гілок та меж</option>
+        </select>
+        <button onclick="runSelectedMethod()" style="padding: 5px;">Розв'язати</button>
+    </div>
+    <div id="resultContainer"></div>
+    <div id="tableContainer" style="overflow-x: auto;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
