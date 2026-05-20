@@ -1,59 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Апроксимація</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="wrapper">
-        <h1>Апроксимація функцій (Інтерполяція та МНК)</h1>
-        
-        <div class="main-layout">
-            <div class="sidebar">
-                <label>Вхідні дані (формат: x, y з нового рядка):</label>
-                <textarea id="dataInput" rows="12"></textarea>
-                
-                <div class="quick-load">
-                    <span>Швидке завантаження (Вар. 12):</span>
-                    <button onclick="loadVariantData(5)">5 точок</button>
-                    <button onclick="loadVariantData(10)">10 точок</button>
-                    <button onclick="loadVariantData(20)">20 точок</button>
-                </div>
+      <h1>Апроксимація функцій (Інтерполяція та МНК)</h1>
 
-                <div class="controls">
-                    <label>Степінь МНК (m):</label>
-                    <input type="number" id="polyDegree" value="2" min="1" max="5">
+      <div class="main-layout">
+        <div class="sidebar">
+          <label>Вхідні дані (формат: x, y з нового рядка):</label>
+          <textarea id="dataInput" rows="12"></textarea>
 
-                    <label>Режим відображення:</label>
-                    <select id="displayMode">
-                        <option value="all">Усі графіки</option>
-                        <option value="lagrange">Тільки Лагранж</option>
-                        <option value="lsm">Тільки МНК</option>
-                    </select>
+          <div class="quick-load">
+            <span>Швидке завантаження (Вар. 12):</span>
+            <button onclick="loadVariantData(5)">5 точок</button>
+            <button onclick="loadVariantData(10)">10 точок</button>
+            <button onclick="loadVariantData(20)">20 точок</button>
+          </div>
 
-                    <button class="btn-primary" onclick="processDataAndDraw()">Побудувати</button>
-                    <button class="btn-anim" onclick="startLagrangeAnim()">Анімація Лагранжа</button>
-                    <button class="btn-anim" onclick="startLSMAnim()">Анімація МНК</button>
-                </div>
-            </div>
+          <div class="controls">
+            <label>Степінь МНК (m):</label>
+            <input type="number" id="polyDegree" value="2" min="1" max="5" />
 
-            <div class="canvas-container">
-                <canvas id="approximationPlot" width="800" height="500"></canvas>
-                <div id="canvas-tooltip"></div>
-                <div class="chart-legend">
-                    <div class="legend-item"><div class="marker" style="background: #e03131;"></div> Вузли</div>
-                    <div class="legend-item"><div class="marker" style="background: #1971c2;"></div> Лагранж</div>
-                    <div class="legend-item"><div class="marker" style="background: #2f9e44;"></div> МНК</div>
-                    <div class="legend-item"><div class="marker" style="background: #9c36b5;"></div> Похибки</div>
-                </div>
-            </div>
+            <label>Режим відображення:</label>
+            <select id="displayMode">
+              <option value="all">Усі графіки</option>
+              <option value="lagrange">Тільки Лагранж</option>
+              <option value="lsm">Тільки МНК</option>
+            </select>
+
+            <button class="btn-primary" onclick="processDataAndDraw()">
+              Побудувати
+            </button>
+            <button class="btn-anim" onclick="startLagrangeAnim()">
+              Анімація Лагранжа
+            </button>
+            <button class="btn-anim" onclick="startLSMAnim()">
+              Анімація МНК
+            </button>
+          </div>
         </div>
+
+        <canvas id="approximationPlot" width="800" height="600"></canvas>
+        <div class="canvas-container">
+          <div id="canvas-tooltip"></div>
+          <div class="legend">
+            <div class="leg-item">
+              <div class="box bg-red"></div>
+              Вузли
+            </div>
+            <div class="leg-item">
+              <div class="box bg-blue"></div>
+              Лагранж
+            </div>
+            <div class="leg-item">
+              <div class="box bg-green"></div>
+              МНК
+            </div>
+            <div class="leg-item">
+              <div class="box bg-purple"></div>
+              Похибки
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="math.js"></script>
     <script src="render.js"></script>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
