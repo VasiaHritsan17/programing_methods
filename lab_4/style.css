@@ -145,15 +145,15 @@ button:active {
 
 
 #canvas-tooltip { 
-  position: fixed; /* ОСЬ ГОЛОВНЕ ВИПРАВЛЕННЯ */
+  position: fixed; 
     background: rgba(33, 37, 41, 0.95);
     color: #fff; 
     padding: 10px; 
     border-radius: 4px; 
     font-size: 13px; 
     display: none; 
-    pointer-events: none; /* Захищає від трясучки */
-    z-index: 1000; /* Малює поверх усього */
+    pointer-events: none; 
+    z-index: 1000; 
     line-height: 1.5;
     white-space: nowrap;
 }
